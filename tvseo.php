@@ -5,10 +5,10 @@
  * @copyright 2018 - 2023 © tivuno.com
  * @license   https://tivuno.com/blog/business/basic-license
  */
-require_once _PS_MODULE_DIR_ . 'tvseo/models/TvseoHelper.php';
+/*require_once _PS_MODULE_DIR_ . 'tvseo/models/TvseoHelper.php';
 require_once _PS_MODULE_DIR_ . 'tvseo/models/link/TvseoLink.php';
 require_once _PS_MODULE_DIR_ . 'tvseo/models/link/TvseoLinkAbstract.php';
-require_once _PS_MODULE_DIR_ . 'tvseo/models/link/TvseoLinkCategory.php';
+require_once _PS_MODULE_DIR_ . 'tvseo/models/link/TvseoLinkCategory.php';*/
 class Tvseo extends Module
 {
     public TvseoLink $urlConfig;
@@ -20,7 +20,7 @@ class Tvseo extends Module
             'bo_controller' => 'Products',
             'func' => 'getProductLink',
             'route_id' => 'product_rule',
-            'id' => 'product'
+            'id' => 'product',
         ],
         'category' => [
             'name' => 'Category',
@@ -28,7 +28,7 @@ class Tvseo extends Module
             'bo_controller' => 'Categories',
             'func' => 'getCategoryLink',
             'route_id' => 'category_rule',
-            'id' => 'category'
+            'id' => 'category',
         ],
         'supplier' => [
             'name' => 'Supplier',
@@ -36,7 +36,7 @@ class Tvseo extends Module
             'bo_controller' => 'Suppliers',
             'func' => 'getSupplierLink',
             'route_id' => 'supplier_rule',
-            'id' => 'supplier'
+            'id' => 'supplier',
         ],
         'manufacturer' => [
             'name' => 'Manufacturer',
@@ -44,7 +44,7 @@ class Tvseo extends Module
             'bo_controller' => 'Manufacturers',
             'func' => 'getManufacturerLink',
             'route_id' => 'manufacturer_rule',
-            'id' => 'manufacturer'
+            'id' => 'manufacturer',
         ],
         'cms_category' => [
             'name' => 'CMS Category',
@@ -52,7 +52,7 @@ class Tvseo extends Module
             'bo_controller' => 'CmsContent',
             'func' => 'getCMSCategoryLink',
             'route_id' => 'cms_category_rule',
-            'id' => 'cms_category'
+            'id' => 'cms_category',
         ],
         'cms' => [
             'name' => 'CMS',
@@ -60,7 +60,7 @@ class Tvseo extends Module
             'bo_controller' => 'CmsContent',
             'func' => 'getCMSLink',
             'route_id' => 'cms_rule',
-            'id' => 'cms'
+            'id' => 'cms',
         ],
         'st_blog' => [
             'name' => 'Blog article',
@@ -68,7 +68,7 @@ class Tvseo extends Module
             'bo_controller' => 'StBlog',
             'func' => 'getModuleLink',
             'route_id' => 'module-stblog-article',
-            'id' => 'st_blog'
+            'id' => 'st_blog',
         ],
         'st_blog_category' => [
             'name' => 'Blog category',
@@ -76,8 +76,8 @@ class Tvseo extends Module
             'bo_controller' => 'StBlogCategory',
             'func' => 'getModuleLink',
             'route_id' => 'module-stblog-category',
-            'id' => 'st_blog_category'
-        ]
+            'id' => 'st_blog_category',
+        ],
     ];
 
     public $selected_controller = [];
@@ -90,7 +90,7 @@ class Tvseo extends Module
         $this->author = 'tivuno.com';
         $this->ps_versions_compliancy = [
             'min' => '1.7.0',
-            'max' => _PS_VERSION_
+            'max' => _PS_VERSION_,
         ];
         $this->need_instance = 0;
         $this->bootstrap = true;
@@ -101,12 +101,12 @@ class Tvseo extends Module
         $this->description = $this->l('Climb the great wall of Google search engine results page (SERP)');
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
 
-        $this->urlConfig = new TvseoLink($this);
+        //$this->urlConfig = new TvseoLink($this);
     }
 
     public function install(): bool
     {
-        return parent::install() && $this->registerHooks();
+        return parent::install();// && $this->registerHooks();
     }
 
     public function registerHooks(): bool
@@ -258,7 +258,7 @@ class Tvseo extends Module
                 'params' => [
                     'fc' => 'module',
                     'module' => 'stblog',
-                ]
+                ],
             ],
             'module-stblog-article' => [
                 'controller' => 'article',
@@ -270,7 +270,7 @@ class Tvseo extends Module
                 'params' => [
                     'fc' => 'module',
                     'module' => 'stblog',
-                ]
+                ],
             ],
             'category_rule' => [
                 'controller' => 'category',
