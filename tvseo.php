@@ -5,13 +5,15 @@
  * @copyright 2018 - 2023 © tivuno.com
  * @license   https://tivuno.com/blog/business/basic-license
  */
-/*require_once _PS_MODULE_DIR_ . 'tvseo/models/TvseoHelper.php';
 require_once _PS_MODULE_DIR_ . 'tvseo/models/link/TvseoLink.php';
+
+
+/*require_once _PS_MODULE_DIR_ . 'tvseo/models/TvseoHelper.php';
 require_once _PS_MODULE_DIR_ . 'tvseo/models/link/TvseoLinkAbstract.php';
 require_once _PS_MODULE_DIR_ . 'tvseo/models/link/TvseoLinkCategory.php';*/
 class Tvseo extends Module
 {
-    public TvseoLink $urlConfig;
+    //public TvseoLink $urlConfig;
 
     protected array $controller_map = [
         'product' => [
@@ -89,32 +91,29 @@ class Tvseo extends Module
         $this->version = '1.0.0';
         $this->author = 'tivuno.com';
         $this->ps_versions_compliancy = [
-            'min' => '1.7.0',
+            'min' => '8.0.0',
             'max' => _PS_VERSION_,
         ];
-        $this->need_instance = 0;
-        $this->bootstrap = true;
+        $this->displayName = $this->l('Selefkos - SEO PrestaShop module');
+        $this->description = $this->l('Climb the great wall of Google search engine results page (SERP)');
 
         parent::__construct();
 
-        $this->displayName = $this->l('PrestaShop SEO module ”Selefkos”');
-        $this->description = $this->l('Climb the great wall of Google search engine results page (SERP)');
-        $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
-
-        //$this->urlConfig = new TvseoLink($this);
+        $this->languages = Language::getLanguages(false, false, true);
     }
 
-    public function install(): bool
+    public function install()
     {
-        return parent::install();// && $this->registerHooks();
+        return parent::install() && $this->registerHooks();
     }
 
-    public function registerHooks(): bool
+    public function registerHooks()
     {
         $hooks = [
             'actionDispatcher',
             'actionDispatcherBefore',
             'actionObjectCategoryUpdateBefore',
+            'actionObjectMetaUpdateBefore',
             'actionObjectProductUpdateBefore',
             'moduleRoutes',
         ];
@@ -507,7 +506,13 @@ class Tvseo extends Module
                 2
             );
         }
-        //self::debug($params);
+    }
+
+    public function hookActionObjectMetaUpdateBefore(&$params)
+    {
+        foreach ($this->languages as $id_lang) {
+            $params['object']->url_rewrite[$id_lang] = TvseoLink::convert($params['object']->title[$id_lang], 1);
+        }
     }
 
     public function hookActionObjectProductUpdateBefore($params)

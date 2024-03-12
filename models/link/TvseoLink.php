@@ -1,11 +1,4 @@
 <?php
-/**
- * PrestaShop SEO module ”Selefkos”
- * @author    tivuno.com
- * @copyright 2018 - 2023 © tivuno.com
- * @license   https://tivuno.com/blog/business/basic-license
- */
-
 class TvseoLink
 {
     protected $routes = [];
@@ -42,7 +35,7 @@ class TvseoLink
                             'manufacturer_rule',
                             'supplier_rule',
                             'cms_rule',
-                            'cms_category_rule'
+                            'cms_category_rule',
                         ])) {
                             $route_data = $dispatcher->default_routes[$route_name];
                             $route_data['rule'] = $one_lang_routes['rule'];
@@ -69,7 +62,7 @@ class TvseoLink
                             'manufacturer_rule',
                             'supplier_rule',
                             'cms_rule',
-                            'cms_category_rule'
+                            'cms_category_rule',
                         ])) {
                             $route_data = $dispatcher->default_routes[$route_name];
                             $route_data['rule'] = $one_lang_routes['rule'];
@@ -277,12 +270,12 @@ class TvseoLink
             '/[γΓ][γΓ]/u' => 'ng',
             '/[γΓ][κΚ]/u' => 'gk',
             '/[ηΗ][ὐὑὙὔὕὝῦὖὗὒὓὛὺυΥ]([θΘκΚξΞπΠσςΣτTφΡχΧψΨ]|\s|$)/u' => 'if$1',
-            '/[ηΗ][υΥ]/u' => 'iu'
+            '/[ηΗ][υΥ]/u' => 'iu',
         ],
         'after' => [
             // Regular letters
             '/[ὐὑὙὔὕὝῦὖὗὒὓὛὺῒῧυύϋΰΥΎΫῢΰῠῡὟῪῨῩ]/u' => 'i',
-        ]
+        ],
     ];
 
     /**

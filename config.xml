@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
     <name>tvseo</name>
-    <displayName><![CDATA[PrestaShop SEO module &rdquo;Selefkos&rdquo;]]></displayName>
+    <displayName><![CDATA[Selefkos - SEO PrestaShop module]]></displayName>
     <version><![CDATA[1.0.0]]></version>
     <description><![CDATA[Climb the great wall of Google search engine results page (SERP)]]></description>
     <author><![CDATA[tivuno.com]]></author>
     <tab><![CDATA[seo]]></tab>
-	<confirmUninstall><![CDATA[Are you sure you want to uninstall?]]></confirmUninstall>
     <is_configurable>0</is_configurable>
-    <need_instance>0</need_instance>
+    <need_instance>1</need_instance>
 </module>
