@@ -2,7 +2,7 @@
 <module>
     <name>tvseo</name>
     <displayName><![CDATA[Selefkos - SEO PrestaShop module]]></displayName>
-    <version><![CDATA[1.0.0]]></version>
+    <version><![CDATA[1.0.1]]></version>
     <description><![CDATA[Climb the great wall of Google search engine results page (SERP)]]></description>
     <author><![CDATA[tivuno.com]]></author>
     <tab><![CDATA[seo]]></tab>
